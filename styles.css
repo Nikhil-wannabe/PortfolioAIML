@@ -1,365 +1,361 @@
-/* Reset and Basic Setup */
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* Cyberpunk Theme Styles */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+/* --- Base Cyberpunk Setup & Variables --- */
+:root {
+    --cp-bg-dark: #0a0c12;
+    --cp-bg-medium: #141823;
+    --cp-bg-light: #1f243a;
+
+    --cp-text-primary: #00e5ff; /* Cyan */
+    --cp-text-secondary: #e0e0e0;
+    --cp-text-darker: #a0a0a0;
+
+    --cp-accent-magenta: #ff00ff;
+    --cp-accent-yellow: #ffff00;
+    --cp-accent-blue: #007bff;
+    --cp-accent-green: #00ff00;
+
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Share Tech Mono', monospace;
+
+    --glow-intensity-small: 0 0 5px;
+    --glow-intensity-medium: 0 0 10px;
+    --glow-intensity-large: 0 0 15px;
+    --glow-intensity-xl: 0 0 20px;
 }
 
+/* Reset and Basic Setup */
+* { padding: 0; margin: 0; box-sizing: border-box; }
+
 html {
-    color: rgb(43, 45, 66); /* Base text color */
-    font-family: 'Patrick Hand', cursive;
-    line-height: 1.6; /* Slightly increased line height for readability */
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    color: var(--cp-text-secondary);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    scroll-behavior: smooth;
 }
 
 body {
-    background: linear-gradient(to bottom, #f4f4f4, #e0e0e0); /* Lighter gradient */
-    font-size: 16px; /* Base font size */
-    /* padding-top: 70px; /* Account for fixed header if implemented - assuming not fixed for this design */
+    background-color: var(--cp-bg-dark);
+    background-image: linear-gradient(rgba(20, 24, 35, 0.8) 1px, transparent 1px);
+    background-size: 100% 3px;
+    font-size: 16px;
+    overflow-x: hidden;
 }
 
-/* Container for consistent width and centering */
-.container {
-    width: 90%;
-    max-width: 1000px; /* Max width of content area */
-    margin: 0 auto; /* Center the container */
-    padding: 0 15px; /* Padding on the sides */
-}
+.container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 0 15px; }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: normal; /* Patrick Hand is already quite bold */
+    font-family: var(--font-heading);
+    font-weight: 700;
     margin-bottom: 0.75em;
-    line-height: 1.2; /* Adjust line-height for headings */
+    line-height: 1.3;
+    color: var(--cp-text-primary);
 }
 
 h1 {
-    font-size: 2.8rem;
-    color: #333;
-    text-align: center; /* Center main title */
+    font-size: 3rem; text-align: center;
+    text-shadow: var(--glow-intensity-medium) var(--cp-accent-magenta), var(--glow-intensity-large) rgba(255,0,255,0.7);
+    animation: subtleGlowPulse 4s infinite ease-in-out;
 }
 
-h2 {
-    font-size: 1.8rem;
-    color: #FF934F; /* Orange from original */
-    border-bottom: 2px solid #2b2d42; /* Underline for section titles */
-    padding-bottom: 0.5em;
-    margin-bottom: 1em;
+h2 { /* Section titles */
+    font-size: 2rem; color: var(--cp-accent-magenta);
+    border-bottom: 2px solid var(--cp-accent-magenta);
+    padding-bottom: 0.5em; margin-bottom: 1.5em;
     text-transform: uppercase;
+    text-shadow: var(--glow-intensity-small) var(--cp-accent-magenta);
+    animation: subtleGlowPulse 4s infinite ease-in-out 1s;
 }
 
-h3 {
-    font-size: 1.4rem;
-    color: #247BA0; /* Blue from original */
-    margin-bottom: 0.5em;
+h3 { /* Subsection titles */
+    font-size: 1.6rem; color: var(--cp-accent-yellow);
+    margin-bottom: 0.6em;
+    text-shadow: var(--glow-intensity-small) var(--cp-accent-yellow);
+    animation: subtleYellowGlowPulse 3.5s infinite ease-in-out;
 }
 
-h4 {
-    font-size: 1.1rem;
-    color: #444;
-}
-
-p {
-    margin-bottom: 1em;
-    line-height: 1.7; /* More spacing for paragraphs */
-}
-
-ul {
-    list-style: none;
-    padding-left: 0; /* Remove default padding */
-}
-
-li {
-    margin-bottom: 0.5em;
-}
+h4 { font-size: 1.1rem; color: var(--cp-text-primary); font-family: var(--font-body); }
+p { margin-bottom: 1em; color: var(--cp-text-secondary); }
+ul { list-style: none; }
+li { margin-bottom: 0.6em; }
 
 a {
-    text-decoration: none;
-    color: #247BA0; /* Link color */
-    transition: color 0.3s ease;
+    text-decoration: none; color: var(--cp-accent-yellow);
+    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+    text-shadow: var(--glow-intensity-small) rgba(255,255,0,0.5);
+    display: inline-block;
 }
-
 a:hover, a:focus {
-    color: #FF934F; /* Link hover color */
-    text-decoration: underline;
+    color: var(--cp-accent-magenta);
+    text-shadow: var(--glow-intensity-medium) var(--cp-accent-magenta);
+    transform: translateY(-1px) scale(1.05);
 }
 
 /* Page Structure */
-#page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scrollbars that might appear due to animations */
-}
+#page-container { display: flex; flex-direction: column; min-height: 100vh; }
+#main-content { flex-grow: 1; padding: 2.5rem 0; }
 
-#main-content {
-    flex-grow: 1; /* Allows main content to fill available space */
-    padding: 2rem 0; /* Padding above and below main content */
-}
-
-/* Header */
+/* Header & Intro Animations */
 #main-header {
-    background-color: #2b2d42; /* Dark background for header */
-    color: #fff;
-    padding: 2rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(10, 12, 18, 0.8); color: var(--cp-text-primary);
+    padding: 2.5rem 0; text-align: center;
+    border-bottom: 2px solid var(--cp-accent-magenta);
+    box-shadow: 0 0 15px var(--cp-accent-magenta);
+    margin-bottom: 2rem; opacity: 0; transform: translateY(-30px);
+    animation: fadeInSlideDown 0.8s 0.2s ease-out forwards;
 }
-
+@keyframes fadeInSlideDown { to { opacity: 1; transform: translateY(0); } }
 #main-header h1 {
-    color: #fff;
-    margin-bottom: 0.25em;
-    font-size: 3rem;
+    color: var(--cp-text-primary); text-transform: uppercase;
+    opacity: 0; transform: translateX(-50px);
+    animation: slideInFromLeft 0.7s 0.8s ease-out forwards;
 }
-
 .profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #FF934F; /* Orange border for profile pic */
-    margin-bottom: 1em;
-    object-fit: cover; /* Ensures image covers the area well */
+    width: 180px; height: 180px; border-radius: 50%;
+    border: 4px solid var(--cp-accent-magenta); margin-bottom: 1.5em;
+    object-fit: cover;
+    box-shadow: 0 0 20px var(--cp-accent-magenta), inset 0 0 10px rgba(255,0,255,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; transform: scale(0.5);
+    animation: zoomIn 0.7s 0.6s ease-out forwards;
 }
-
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--cp-accent-magenta), inset 0 0 15px rgba(255,0,255,0.7);
+    animation: glitch 0.4s linear infinite;
+}
 .subtitle {
-    font-size: 1.3rem;
-    color: #f0f0f0; /* Lighter color for subtitle */
-    margin-bottom: 0;
+    font-size: 1.4rem; color: var(--cp-text-primary); font-family: var(--font-body);
+    text-shadow: var(--glow-intensity-small) var(--cp-accent-blue);
+    opacity: 0; transform: translateX(50px);
+    animation: slideInFromRight 0.7s 1s ease-out forwards;
 }
+@keyframes slideInFromLeft { to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInFromRight { to { opacity: 1; transform: translateX(0); } }
+@keyframes zoomIn { to { opacity: 1; transform: scale(1); } }
 
 /* Resume Layout & Sections */
 .resume-layout {
-    background-color: #fff; /* White background for resume content area */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    background-color: var(--cp-bg-medium); padding: 2.5rem; border-radius: 0px;
+    border: 1px solid var(--cp-accent-blue);
+    box-shadow: inset 0 0 15px rgba(0,123,255,0.3), 0 0 10px rgba(0,123,255,0.3);
+    position: relative; /* For corner elements */
 }
+/* Decorative Corner Elements for .resume-layout */
+.resume-layout::before, .resume-layout::after {
+    content: ''; position: absolute;
+    width: 20px; height: 20px;
+    border-color: var(--cp-accent-yellow);
+    border-style: solid;
+    transition: all 0.3s ease;
+}
+.resume-layout::before { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+.resume-layout::after { top: -5px; right: -5px; border-width: 2px 2px 0 0; }
+/* Bottom corners for .resume-layout removed for now due to selector complexity. Top corners remain. */
+/*
+.resume-layout > div::before, .resume-layout > div::after { 
+    content: ''; position: absolute;
+    width: 20px; height: 20px;
+    border-color: var(--cp-accent-yellow);
+    border-style: solid;
+    transition: all 0.3s ease;
+}
+.resume-layout > div::before { bottom: -5px; left: -5px; border-width: 0 0 2px 2px; }
+.resume-layout > div::after { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+*/
 
 .resume-section {
-    margin-bottom: 2.5rem; /* Space between sections */
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    margin-bottom: 3rem; opacity: 0; transform: translateY(50px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    position: relative; /* For section dividers */
+    padding-bottom: 20px; /* Space for divider */
+}
+.resume-section.is-visible { opacity: 1; transform: translateY(0); }
+.resume-section:last-child { margin-bottom: 0; padding-bottom: 0; }
+.resume-section:last-child::after { display: none; } /* No divider after last section */
+
+/* Cyber Section Divider */
+.resume-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background-image: linear-gradient(to right, transparent, var(--cp-accent-magenta), transparent);
+    box-shadow: 0 0 5px var(--cp-accent-magenta);
+    animation: scanLineAnim 4s linear infinite;
+}
+@keyframes scanLineAnim {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; } /* Ensure it goes fully across and beyond */
 }
 
-.resume-section:last-child {
-    margin-bottom: 0;
-}
 
-.no-js .resume-section {
-    opacity: 1;
-    transform: translateY(0);
+/* Staggered Animation Children */
+.stagger-child {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
+.stagger-child.is-visible { opacity: 1; transform: translateY(0); }
 
-/* Specific Section Styling */
-#skills ul {
-    padding-left: 20px; /* Indent skill lists */
-    list-style: disc; /* Use disc bullets for skills */
+/* Skills Section - Data Chip Styling */
+#skills ul { padding-left: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.data-chip { /* Was #skills li */
+    display: inline-block;
+    background-color: rgba(0, 229, 255, 0.1); /* Faint cyan background */
+    border: 1px solid var(--cp-text-primary);
+    color: var(--cp-text-primary);
+    padding: 8px 15px;
+    margin-bottom: 10px; /* Gap is now used */
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)); /* Angled corners */
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    text-shadow: 0 0 3px var(--cp-text-primary);
+}
+.data-chip:hover {
+    background-color: var(--cp-text-primary);
+    color: var(--cp-bg-dark);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 10px var(--cp-text-primary);
+    text-shadow: none;
 }
 
 .skills-category {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; padding: 1rem;
+    border: 1px dashed var(--cp-accent-blue);
+    /* Adding corner elements to skill categories too */
+    position: relative;
 }
-.skills-category:last-child {
-    margin-bottom: 0;
+.skills-category::before, .skills-category::after,
+.skills-category > ul::before, .skills-category > ul::after { /* Using ul for bottom corners */
+    content: ''; position: absolute;
+    width: 10px; height: 10px;
+    border-color: var(--cp-accent-blue);
+    border-style: solid;
 }
+.skills-category::before { top: -3px; left: -3px; border-width: 1px 0 0 1px; }
+.skills-category::after { top: -3px; right: -3px; border-width: 1px 1px 0 0; }
+.skills-category > ul::before { bottom: -3px; left: -3px; border-width: 0 0 1px 1px; }
+.skills-category > ul::after { bottom: -3px; right: -3px; border-width: 0 1px 1px 0; }
+
+.skills-category:last-child { margin-bottom: 0; }
 
 
-#flagship-projects ul {
-    perspective: 1000px; 
+/* Flagship Projects - Parallax Styling (largely unchanged) */
+#flagship-projects { perspective: 1000px; }
+.parallax-project-list { transform-style: preserve-3d; }
+.parallax-project-item {
+    position: relative; min-height: 250px; margin-bottom: 3rem;
 }
-
-#flagship-projects li {
-    background-color: #f9f9f9; 
-    border: 1px solid #eee;
-    border-left: 5px solid #FF934F; 
-    padding: 1.5rem; 
-    margin-bottom: 2rem; 
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease-out, box-shadow 0.3s ease-out; 
+.parallax-layers {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    transform-style: preserve-3d; border-radius: 0px; overflow: hidden;
+    border: 1px solid var(--cp-accent-magenta);
+    box-shadow: 0 0 10px rgba(255,0,255,0.3);
+    transition: box-shadow 0.3s ease-out;
 }
-
-#flagship-projects li:hover {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    transform: translateY(-5px); 
+.parallax-project-item:hover .parallax-layers { box-shadow: 0 0 20px var(--cp-accent-magenta); }
+.parallax-bg {
+    position: absolute; top: -10%; left: -10%; right: -10%; bottom: -10%;
+    background-color: var(--cp-bg-light);
+    background-image: linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px; z-index: 1;
 }
-
-#flagship-projects h3 {
-    margin-bottom: 0.5em; 
+.parallax-content {
+    position: relative; z-index: 2; padding: 1.5rem;
+    color: var(--cp-text-secondary); background-color: rgba(20, 24, 35, 0.6);
+    height: 100%;
+}
+.parallax-content h3 { color: var(--cp-accent-yellow); margin-bottom: 0.5em; }
+.parallax-content p { color: var(--cp-text-secondary); font-size: 0.95rem; margin-bottom: 0.8em; }
+.parallax-fg {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 3;
+    background-image: repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(255,0,255,0.1) 20px,rgba(255,0,255,0.1) 21px,transparent 21px,transparent 40px);
+    pointer-events: none;
 }
 
 /* Education Timeline */
-.timeline .event + .event {
-    padding-top: 1rem;
+.timeline .event {
+    display: grid; grid-template-columns: 100px 1fr;
+    gap: 15px; margin-bottom: 1.5rem; padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--cp-accent-blue);
 }
-
-.event {
-    display: grid;
-    grid-template-columns: 70px 1fr; 
-    gap: 10px; 
-    margin-bottom: 1rem;
+.timeline .event:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.event .duration {
+    font-family: var(--font-heading); color: var(--cp-accent-yellow); font-size: 1rem;
+    text-align: right; padding-right: 15px; border-right: 2px solid var(--cp-accent-yellow);
 }
-
-.event .duration { /* This class was not in HTML, so rule might not apply. Assuming it's for future use or a mistake. */
-    font-weight: bold;
-    color: #2b2d42;
-    font-size: 0.9rem;
-}
-
-.timeline .content {
-    border-left: 1px solid #ccc; 
-    padding-left: 1rem;
-}
-
-.timeline .content h3 {
-    font-size: 1.2rem; 
-    color: #247BA0;
-}
-.timeline .content h4 {
-    font-size: 1rem;
-    color: #555;
-    font-style: italic;
-}
+.timeline .content h4 { font-family: var(--font-body); color: var(--cp-text-primary); margin-bottom: 0.3em; }
+.timeline .content p { font-size: 0.95rem; color: var(--cp-text-secondary); }
 
 /* Contact Section */
-#contact ul {
-    list-style: none;
-    padding-left: 0;
-}
-#contact li {
-    margin-bottom: 0.8em;
-    word-break: break-all; /* Break long links if they cause overflow */
-}
-#contact a {
-    font-weight: bold;
-}
+#contact ul { padding-left: 0; }
+#contact li { margin-bottom: 1em; word-break: break-all; }
+#contact a { font-weight: normal; font-size: 1.1rem; }
 
 /* Footer */
 #main-footer {
-    background-color: #222; 
-    color: #aaa;
-    text-align: center;
-    padding: 1.5rem 0;
-    font-size: 0.9rem;
+    background-color: rgba(10,12,18,0.9); color: var(--cp-text-darker); text-align: center;
+    padding: 2rem 0; margin-top: 2rem; border-top: 1px solid var(--cp-accent-magenta);
+    box-shadow: 0 0 10px var(--cp-accent-magenta); font-family: var(--font-body);
 }
-
-#main-footer p {
-    margin-bottom: 0;
-}
-
-#main-footer a {
-    color: #FF934F;
-}
-#main-footer a:hover {
-    color: #fff;
-}
+#main-footer p { margin-bottom: 0; }
+#main-footer a { color: var(--cp-accent-yellow); }
+#main-footer a:hover { color: var(--cp-accent-magenta); }
 
 /* --- Responsive Adjustments --- */
-
-/* Medium devices (tablets, larger phones) - max-width 768px */
 @media (max-width: 768px) {
-    body {
-        padding-top: 0; /* Remove padding if header is not fixed/sticky */
-        font-size: 15px; /* Slightly reduce base font size */
-    }
-    .container {
-        width: 95%; /* Use more of the screen width */
-    }
-    #main-header {
-        padding: 1.5rem 0;
-    }
-    #main-header h1 {
-        font-size: 2.2rem; /* Reduce header font size */
-    }
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-    }
-    .subtitle {
-        font-size: 1.1rem; /* Reduce subtitle font size */
-    }
-    h2 { /* Section titles */
-        font-size: 1.6rem;
-    }
-    h3 { /* Subsection titles (like in Skills, Projects) */
-        font-size: 1.25rem;
-    }
-    .resume-layout {
-        padding: 1.5rem; /* Reduce padding inside the main white box */
-    }
-    #flagship-projects li {
-        padding: 1.25rem; /* Reduce padding in project cards */
-        margin-bottom: 1.5rem;
-    }
-    .event { /* Education timeline event */
-        grid-template-columns: 50px 1fr; /* Reduce width of the "duration" column */
-        gap: 8px;
-    }
-    .timeline .content h3 {
-        font-size: 1.1rem;
-    }
-     .timeline .content h4 {
-        font-size: 0.95rem;
-    }
+    body { font-size: 15px; } .container { width: 95%; }
+    h1 { font-size: 2.5rem; } h2 { font-size: 1.7rem; } h3 { font-size: 1.4rem; }
+    .profile-pic { width: 140px; height: 140px; }
+    .subtitle { font-size: 1.2rem; }
+    .resume-layout { padding: 2rem; }
+    .timeline .event { grid-template-columns: 80px 1fr; }
+    .event .duration { font-size: 0.9rem; }
+    .parallax-project-item { min-height: 230px; }
+    .parallax-content { padding: 1.2rem; }
+    .data-chip { padding: 7px 12px; font-size: 0.85rem; }
 }
 
-/* Small devices (phones) - max-width 480px */
 @media (max-width: 480px) {
-    body {
-        font-size: 14px; /* Further reduce base font size */
-    }
-    #main-header {
-        padding: 1rem 0;
-    }
-    #main-header h1 {
-        font-size: 1.8rem; /* Further reduce main title */
-    }
-    .profile-pic {
-        width: 100px;
-        height: 100px;
-    }
-    .subtitle {
-        font-size: 1rem;
-    }
-    h2 { /* Section titles */
-        font-size: 1.4rem;
-        margin-bottom: 0.8em;
-    }
-    h3 { /* Subsection titles */
-        font-size: 1.1rem;
-    }
-    .resume-layout {
-        padding: 1rem; /* Further reduce padding */
-    }
-    #skills ul {
-        padding-left: 15px; /* Reduce indent for skills */
-    }
-    #flagship-projects li {
-        padding: 1rem; /* Further reduce padding in project cards */
-        margin-bottom: 1rem;
-    }
-    .event { /* Education timeline event - stack them */
-        grid-template-columns: 1fr; /* Full width for both parts */
-    }
-    .event .duration {
-        /* If .duration was used, style it appropriately for stacking, e.g., margin-bottom */
-         margin-bottom: 0.25em;
-         font-size: 0.85rem;
-    }
-    .timeline .content {
-        border-left: none; /* Remove border when stacked */
-        padding-left: 0; /* Remove padding when stacked */
-    }
-    #contact li {
-        font-size: 0.95rem; /* Adjust contact link size for tappability */
-    }
-    #contact a {
-        display: inline-block; /* Better touch targets */
-        padding: 0.2em 0;
-    }
-    #main-footer {
-        padding: 1rem 0;
-        font-size: 0.85rem;
-    }
+    body { font-size: 14px; }
+    h1 { font-size: 2rem; } h2 { font-size: 1.5rem; } h3 { font-size: 1.2rem; }
+    .profile-pic { width: 110px; height: 110px; }
+    .subtitle { font-size: 1rem; }
+    .resume-layout { padding: 1.5rem; }
+    /* #skills li { padding-left: 8px; } /* Replaced by .data-chip */
+    .data-chip { padding: 6px 10px; font-size: 0.8rem; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));}
+    .parallax-project-item { min-height: auto; padding-bottom: 1rem; }
+    .parallax-layers { position: relative; }
+    .parallax-content { padding: 1rem; }
+    .timeline .event { grid-template-columns: 1fr; gap: 8px; }
+    .event .duration { text-align: left; border-right: none; border-bottom: 1px dashed var(--cp-accent-yellow); padding-right: 0; padding-bottom: 8px; margin-bottom: 8px; }
+    #contact a { font-size: 1rem; }
+    .resume-layout::before, .resume-layout::after,
+    .resume-layout > div::before, .resume-layout > div::after { width: 15px; height: 15px; } /* Smaller corners */
+    .skills-category::before, .skills-category::after,
+    .skills-category > ul::before, .skills-category > ul::after { width: 8px; height: 8px; }
+}
+
+/* Keyframe Animations */
+@keyframes subtleGlowPulse {
+    0%, 100% { text-shadow: var(--glow-intensity-small) var(--cp-accent-magenta), var(--glow-intensity-medium) rgba(255,0,255,0.3); }
+    50% { text-shadow: var(--glow-intensity-medium) var(--cp-accent-magenta), var(--glow-intensity-large) rgba(255,0,255,0.7); }
+}
+@keyframes subtleYellowGlowPulse {
+    0%, 100% { text-shadow: var(--glow-intensity-small) var(--cp-accent-yellow), var(--glow-intensity-medium) rgba(255,255,0,0.3); }
+    50% { text-shadow: var(--glow-intensity-medium) var(--cp-accent-yellow), var(--glow-intensity-large) rgba(255,255,0,0.5); }
+}
+@keyframes glitch {
+  0% { transform: translate(0, 0) scale(1.05); }
+  10%, 90% { transform: translate(-2px, 1px) scale(1.05); }
+  20%, 80% { transform: translate(1px, -1px) scale(1.05); }
+  30%, 70% { transform: translate(-1px, 2px) scale(1.05); }
+  40%, 60% { transform: translate(1px, -2px) scale(1.05); }
+  50% { transform: translate(0, 0) scale(1.05); }
 }
