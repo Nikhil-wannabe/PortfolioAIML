@@ -9,93 +9,153 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-    <title>Resume</title>
+    <title>Nikhil Bramhandam - Applied AI Engineer</title> <!-- Updated Title -->
 </head>
 
 <body>
-    <div class="resume">
-        <div class="column">
-            <section class="profile">
-                <h1>Nikhil Krishna</h1>
-                <p>Student</p>
-                <img src="https://i.ibb.co/XFQN9VZ/ss-fr.png" alt="Image not found">
-            </section>
-            <section class="contact">
-                <h2>Contact information</h2>
-                <ul>
-                    <li><a href="mailto:nkrishna242@gmail.com">nkrishna242@gmail.com</a></li>
-                    <li><a href="tel:+917660871070">7660871070</a></li>
-                </ul>
-            </section>
+    <div id="page-container"> <!-- Main container for the whole page -->
 
+        <header id="main-header">
+            <div class="container"> <!-- Container for consistent padding/alignment -->
+                <div class="profile-info">
+                    <!-- Assuming the profile picture URL remains the same, if not, it should be updated -->
+                    <img src="https://i.ibb.co/XFQN9VZ/ss-fr.png" alt="Nikhil Bramhandam Profile Picture" class="profile-pic">
+                    <h1>Nikhil Bramhandam</h1>
+                    <p class="subtitle">Applied AI Engineer</p> <!-- Updated Subtitle -->
+                </div>
+            </div>
+        </header>
 
-            <section class="objetive">
-                <h2>Objective</h2>
-                <p>I am an aspiring Web Developer</p>
-            </section class="objective">
-            </section>
-        </div>
-        <div class="column">
+        <main id="main-content">
+            <div class="container">
+                <div class="resume-layout"> <!-- Using a general layout class -->
 
-            <section class="skills">
-                <ul>
-                    <li>
-                        <h2>Skills</h2>
-                    </li>
-                    <ul>
-                        A list of languages in which I have learnt as dev
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Python</li>
-                        <li>C</li>
-                        <li>C++</li>
-                        <li>C#</li>
-                    </ul>
-                    <li>Building and Training AI models from scratch</li>
-                    <li>Basic understanding of GameDevelopment using Unity</li>
-                    <li>Proficiency is using industry standard technologies technologies like Logisim,LTSpice</li>
-                    <li>Basic understanding of Google cloud architechure </li>
-                </ul>
+                    <section id="about-me" class="resume-section">
+                        <h2>About Me</h2>
+                        <p>Applied AI Engineer with hands-on experience designing intelligent systems, building AI-native interfaces, and fine-tuning LLMs for real-world applications. Currently pursuing a Master’s in Applied Artificial Intelligence at Stevens Institute of Technology with a focus on human-AI collaboration, reinforcement learning, and model safety. Adept at combining AI theory with full-stack implementation, with a portfolio that merges interactivity, usability, and performance across domains.</p>
+                    </section>
 
-            </section>
-
-            <section class="Education">
-                <h2>Education</h2>
-                <ul class="timeline">
-                    <li class="event">
-                        <span class="duration">2020 - Present</span>
-                        <div class="content">
-                            <h3>B.Tech in Electroincs and Communcications Engineering</h3>
-                            <h4>SRM Institute of Science and Technology</h4>
-                            <p>I am currently a student at SRM Institure of Science and Technology and I am pursuing a
-                                degree in
-                                Electroincs and Communication Engineering with a specialisation in Cyber Physical
-                                Systems</p>
+                    <section id="skills" class="resume-section">
+                        <h2>🧠 Core Skills</h2> <!-- Updated Section Title -->
+                        <div class="skills-category">
+                            <h3>AI & ML</h3>
+                            <ul>
+                                <li>LLMs</li>
+                                <li>Scikit-learn</li>
+                                <li>Reinforcement Learning</li>
+                                <li>NLP</li>
+                                <li>Resume Scoring</li>
+                                <li>Model Evaluation</li>
+                            </ul>
                         </div>
-                    </li>
-                    <li class="event">
-                        <span class="duration">2018 - 2020</span>
-                        <div class="content">
-                            <h3>Telangana State Board 12th Grade</h3>
-                            <h4>Gyanville Academy</h4>
-                            <p>I was the headboy at gyanville academy where I completed my schooling in PCM stream</p>
+                        <div class="skills-category">
+                            <h3>Programming</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>C#</li>
+                                <li>JavaScript</li>
+                                <li>TypeScript</li>
+                                <li>Bash</li>
+                            </ul>
                         </div>
-                    </li>
-                    <li class="event">
-                        <span class="duration">2018</span>
-                        <div class="content">
-                            <h3>CBSE 10th Grade</h3>
-                            <h4>GVK</h4>
-                            <p>I was a student at GVK where I completed my 10th grade</p>
+                        <div class="skills-category">
+                            <h3>Frameworks & Tools</h3>
+                            <ul>
+                                <li>Flask</li>
+                                <li>FastAPI</li>
+                                <li>.NET</li>
+                                <li>React</li>
+                                <li>Streamlit</li>
+                                <li>Tailwind</li>
+                                <li>Git</li>
+                                <li>REST APIs</li>
+                            </ul>
                         </div>
-                    </li>
-                </ul>
-            </section>
-        </div>
-    </div>
+                        <div class="skills-category">
+                            <h3>Cloud & Infra</h3>
+                            <ul>
+                                <li>Azure</li>
+                                <li>Kubernetes</li>
+                                <li>Temporal</li>
+                                <li>GitHub Actions</li>
+                                <li>Docker</li>
+                            </ul>
+                        </div>
+                        <div class="skills-category">
+                            <h3>AI Ops</h3>
+                            <ul>
+                                <li>Prompt Engineering</li>
+                                <li>Local SLMs</li>
+                                <li>Model Monitoring</li>
+                                <li>Interactive Dashboards</li>
+                            </ul>
+                        </div>
+                    </section>
 
+                    <section id="flagship-projects" class="resume-section">
+                        <h2>🏆 Flagship Projects (Magna Opera)</h2> <!-- Updated Section Title -->
+                        <ul>
+                            <li>
+                                <h3>MITRA OS – AI-Native Operating System Prototype</h3>
+                                <p>Built a modular, voice-first OS environment that uses local LLMs and NLP pipelines for smart resource orchestration.</p>
+                                <p>Designed terminal-style UX with embedded Python logic for real-time reasoning and system automation.</p>
+                                <!-- <p><em>Technologies: Python, Local LLMs, NLP Pipelines, Terminal UX</em></p> -->
+                                <!-- Link can be added if available -->
+                            </li>
+                            <li>
+                                <h3>VIBEZSUME – AI Resume Analyzer and Generator</h3>
+                                <p>Developed a local-SLM-powered application for resume validation, ATS scoring, and generation.</p>
+                                <p>Supports role-matching, template enforcement, and SOTA resume augmentation using interactive UI.</p>
+                                <!-- <p><em>Technologies: Python, Local SLMs, Streamlit (example for UI)</em></p> -->
+                            </li>
+                            <li>
+                                <h3>SKlearn Playground – ML Experimentation UI</h3>
+                                <p>Created a fully visual platform for experimenting with classification and regression algorithms.</p>
+                                <p>Features real-time metrics, evaluation plots, and algorithm switching — designed for both learning and experimentation.</p>
+                                <!-- <p><em>Technologies: Python, Scikit-learn, Flask/Streamlit (example for UI)</em></p> -->
+                            </li>
+                        </ul>
+                    </section>
 
+                    <section id="education" class="resume-section">
+                        <h2>🎓 Education</h2> <!-- Updated Section Title -->
+                        <ul class="timeline">
+                            <li class="event">
+                                <span class="duration">Expected 2025</span>
+                                <div class="content">
+                                    <h3>Stevens Institute of Technology</h3>
+                                    <h4>M.S. in Applied Artificial Intelligence</h4> <!-- Removed duplicate "Expected 2025" -->
+                                    <p>Focus: LLMs, Human-AI Systems, Reinforcement Learning, Security and Robustness in AI</p>
+                                </div>
+                            </li>
+                            <!-- Previous educational details removed as per new content -->
+                        </ul>
+                    </section>
 
+                    <section id="contact" class="resume-section">
+                        <h2>🌐 Links for Contact & Verification</h2> <!-- Updated Section Title -->
+                        <ul>
+                            <li>Portfolio: <a href="https://nikhilbramhandam.dev" target="_blank" rel="noopener noreferrer">nikhilbramhandam.dev</a> (Update after deployment)</li>
+                            <li>GitHub: <a href="https://github.com/nikhilbramhandam" target="_blank" rel="noopener noreferrer">github.com/nikhilbramhandam</a></li>
+                            <li>LinkedIn: <a href="https://linkedin.com/in/nikhilbramhandam" target="_blank" rel="noopener noreferrer">linkedin.com/in/nikhilbramhandam</a></li>
+                            <li>Medium: <a href="https://medium.com/@nikhilbramhandam" target="_blank" rel="noopener noreferrer">medium.com/@nikhilbramhandam</a></li>
+                            <li>Email: <a href="mailto:nikhilbramhandam@gmail.com">nikhilbramhandam@gmail.com</a></li>
+                            <!-- Phone number removed as per new content -->
+                        </ul>
+                    </section>
+
+                </div> <!-- .resume-layout -->
+            </div> <!-- .container -->
+        </main>
+
+        <footer id="main-footer">
+            <div class="container">
+                <p>&copy; 2024 Nikhil Bramhandam. All rights reserved. | Designed with care.</p> <!-- Updated Name -->
+            </div>
+        </footer>
+
+    </div> <!-- #page-container -->
+    <script src="script.js"></script>
 </body>
 
 </html>
