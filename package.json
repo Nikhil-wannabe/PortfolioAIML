@@ -1,0 +1,12 @@
+{
+  "name": "portfolioaiml",
+  "version": "1.0.0",
+  "description": "Nikhil Bramhandam's AI-themed horizontal portfolio",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
