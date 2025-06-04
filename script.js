@@ -1,78 +1,138 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Horizontal scrolling
+const container = document.getElementById('scroll-container');
+container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    container.scrollLeft += e.deltaY;
+});
 
-    // --- On-Scroll Fade-In Animation for Sections ---
-    const sections = document.querySelectorAll('.resume-section');
+// Touch dragging
+let touchStartX = 0;
+container.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+container.addEventListener('touchmove', (e) => {
+    const delta = touchStartX - e.touches[0].clientX;
+    container.scrollLeft += delta;
+    touchStartX = e.touches[0].clientX;
+});
 
-    const animateOnScroll = () => {
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (sectionTop < windowHeight * 0.85) { // Trigger when 85% of the section is visible
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }
-        });
-    };
-
-    // Initial check for animations
-    animateOnScroll();
-
-    // Add scroll event listener for animations
-    window.addEventListener('scroll', animateOnScroll);
-
-
-    // --- Parallax Scrolling for Flagship Projects ---
-    const flagshipProjectsSection = document.getElementById('flagship-projects');
-
-    // Note: For a true parallax effect, you often need specific HTML structure
-    // (e.g., background layers) and CSS (e.g., background-attachment: fixed, or
-    // perspective and transform-style for 3D parallax).
-    // This script will demonstrate a simple effect by moving project items at a
-    // different speed or transforming them on scroll.
-
-    if (flagshipProjectsSection) {
-        const projectItems = flagshipProjectsSection.querySelectorAll('ul > li');
-
-        const parallaxEffect = () => {
-            const scrollY = window.scrollY;
-            const sectionTop = flagshipProjectsSection.offsetTop;
-            const sectionHeight = flagshipProjectsSection.offsetHeight;
-
-            // Only apply effect when section is somewhat in view
-            if (scrollY > sectionTop - window.innerHeight && scrollY < sectionTop + sectionHeight) {
-                projectItems.forEach((item, index) => {
-                    const itemTop = item.offsetTop; // Relative to its parent ul
-                    // Calculate a movement factor - adjust as needed
-                    // Slower movement for items further down, or vary based on index
-                    const movement = (scrollY - (sectionTop + itemTop)) * 0.1 * (index % 2 === 0 ? 1 : 1.2);
-
-                    // Example: Move items slightly up or down
-                    item.style.transform = `translateY(${movement}px)`;
-
-                    // Example: Adjust opacity (can be combined with movement)
-                    // const opacity = 1 - Math.abs(movement) / 100;
-                    // item.style.opacity = Math.max(0.5, Math.min(1, opacity));
-                });
-            }
-        };
-
-        // Add scroll event listener for parallax
-        window.addEventListener('scroll', parallaxEffect);
+// Keyboard navigation
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+        container.scrollLeft += window.innerWidth;
+    } else if (e.key === 'ArrowLeft') {
+        container.scrollLeft -= window.innerWidth;
     }
+});
 
-    // --- Smooth Scrolling for Anchor Links (Optional, if nav links are added) ---
-    // Example:
-    // const navLinks = document.querySelectorAll('header nav a[href^="#"]');
-    // navLinks.forEach(link => {
-    //     link.addEventListener('click', function(e) {
-    //         e.preventDefault();
-    //         const targetId = this.getAttribute('href');
-    //         const targetElement = document.querySelector(targetId);
-    //         if (targetElement) {
-    //             targetElement.scrollIntoView({ behavior: 'smooth' });
-    //         }
-    //     });
-    // });
+// Parallax layers
+function updateParallax() {
+    const scrollLeft = container.scrollLeft;
+    document.querySelectorAll('[data-speed]').forEach(el => {
+        const speed = parseFloat(el.dataset.speed);
+        el.style.transform = `translateX(${ -scrollLeft * speed }px)`;
+    });
+}
+container.addEventListener('scroll', updateParallax);
+window.addEventListener('resize', updateParallax);
 
-    console.log("Resume script loaded. Animations and parallax initialized.");
+// Three.js hero object
+function initThree() {
+    const canvas = document.getElementById('hero-canvas');
+    const renderer = new THREE.WebGLRenderer({canvas, alpha: true});
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+    camera.position.z = 3;
+
+    let geometry = new THREE.TorusKnotGeometry(0.7, 0.25, 100, 16);
+    const material = new THREE.MeshStandardMaterial({color: 0x8FBC8F, metalness: 0.3, roughness: 0.2});
+    let mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+    const light = new THREE.PointLight(0xffffff, 1);
+    light.position.set(2,2,3);
+    scene.add(light);
+
+    // Interaction: rotate with pointer
+    let isDragging = false;
+    let lastX = 0;
+    canvas.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        lastX = e.clientX;
+    });
+    window.addEventListener('pointerup', () => { isDragging = false; });
+    window.addEventListener('pointermove', (e) => {
+        if (isDragging) {
+            const delta = e.clientX - lastX;
+            mesh.rotation.y += delta * 0.005;
+            lastX = e.clientX;
+        }
+    });
+
+    // Color control
+    const colorInput = document.getElementById('mesh-color');
+    colorInput.addEventListener('input', () => {
+        material.color.set(colorInput.value);
+    });
+
+    // Geometry control
+    const shapeSelect = document.getElementById('mesh-shape');
+    function updateGeometry(shape) {
+        scene.remove(mesh);
+        geometry.dispose();
+        switch(shape) {
+            case 'sphere':
+                geometry = new THREE.SphereGeometry(0.8, 32, 32);
+                break;
+            case 'box':
+                geometry = new THREE.BoxGeometry(1,1,1);
+                break;
+            default:
+                geometry = new THREE.TorusKnotGeometry(0.7, 0.25, 100, 16);
+        }
+        mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+    }
+    shapeSelect.addEventListener('change', (e) => updateGeometry(e.target.value));
+
+    function animate() {
+        requestAnimationFrame(animate);
+        mesh.rotation.x += 0.01;
+        mesh.rotation.y += 0.02;
+        renderer.render(scene, camera);
+    }
+    animate();
+}
+
+
+initThree();
+
+// Fade-in panels
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.panel').forEach(p => observer.observe(p));
+
+// Contact form
+const form = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if(form.checkValidity()) {
+        status.textContent = 'Message sent!';
+        status.style.color = '#7CFC00';
+        status.classList.add('show');
+        setTimeout(() => status.classList.remove('show'), 2000);
+        form.reset();
+    } else {
+        status.textContent = 'Please fill out all fields.';
+        status.style.color = '#FF6347';
+        status.classList.add('show');
+        setTimeout(() => status.classList.remove('show'), 2000);
+    }
 });
