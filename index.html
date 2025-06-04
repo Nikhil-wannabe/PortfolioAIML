@@ -1,161 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikhil Bramhandam Portfolio</title>
     <link href="styles.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-    <title>Nikhil Bramhandam - Applied AI Engineer</title> <!-- Updated Title -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+    <script defer src="script.js"></script>
 </head>
-
 <body>
-    <div id="page-container"> <!-- Main container for the whole page -->
-
-        <header id="main-header">
-            <div class="container"> <!-- Container for consistent padding/alignment -->
-                <div class="profile-info">
-                    <!-- Assuming the profile picture URL remains the same, if not, it should be updated -->
-                    <img src="https://i.ibb.co/XFQN9VZ/ss-fr.png" alt="Nikhil Bramhandam Profile Picture" class="profile-pic">
-                    <h1>Nikhil Bramhandam</h1>
-                    <p class="subtitle">Applied AI Engineer</p> <!-- Updated Subtitle -->
-                </div>
-            </div>
-        </header>
-
-        <main id="main-content">
-            <div class="container">
-                <div class="resume-layout"> <!-- Using a general layout class -->
-
-                    <section id="about-me" class="resume-section">
-                        <h2>About Me</h2>
-                        <p>Applied AI Engineer with hands-on experience designing intelligent systems, building AI-native interfaces, and fine-tuning LLMs for real-world applications. Currently pursuing a Master’s in Applied Artificial Intelligence at Stevens Institute of Technology with a focus on human-AI collaboration, reinforcement learning, and model safety. Adept at combining AI theory with full-stack implementation, with a portfolio that merges interactivity, usability, and performance across domains.</p>
-                    </section>
-
-                    <section id="skills" class="resume-section">
-                        <h2>🧠 Core Skills</h2> <!-- Updated Section Title -->
-                        <div class="skills-category">
-                            <h3>AI & ML</h3>
-                            <ul>
-                                <li>LLMs</li>
-                                <li>Scikit-learn</li>
-                                <li>Reinforcement Learning</li>
-                                <li>NLP</li>
-                                <li>Resume Scoring</li>
-                                <li>Model Evaluation</li>
-                            </ul>
-                        </div>
-                        <div class="skills-category">
-                            <h3>Programming</h3>
-                            <ul>
-                                <li>Python</li>
-                                <li>C#</li>
-                                <li>JavaScript</li>
-                                <li>TypeScript</li>
-                                <li>Bash</li>
-                            </ul>
-                        </div>
-                        <div class="skills-category">
-                            <h3>Frameworks & Tools</h3>
-                            <ul>
-                                <li>Flask</li>
-                                <li>FastAPI</li>
-                                <li>.NET</li>
-                                <li>React</li>
-                                <li>Streamlit</li>
-                                <li>Tailwind</li>
-                                <li>Git</li>
-                                <li>REST APIs</li>
-                            </ul>
-                        </div>
-                        <div class="skills-category">
-                            <h3>Cloud & Infra</h3>
-                            <ul>
-                                <li>Azure</li>
-                                <li>Kubernetes</li>
-                                <li>Temporal</li>
-                                <li>GitHub Actions</li>
-                                <li>Docker</li>
-                            </ul>
-                        </div>
-                        <div class="skills-category">
-                            <h3>AI Ops</h3>
-                            <ul>
-                                <li>Prompt Engineering</li>
-                                <li>Local SLMs</li>
-                                <li>Model Monitoring</li>
-                                <li>Interactive Dashboards</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <section id="flagship-projects" class="resume-section">
-                        <h2>🏆 Flagship Projects (Magna Opera)</h2> <!-- Updated Section Title -->
-                        <ul>
-                            <li>
-                                <h3>MITRA OS – AI-Native Operating System Prototype</h3>
-                                <p>Built a modular, voice-first OS environment that uses local LLMs and NLP pipelines for smart resource orchestration.</p>
-                                <p>Designed terminal-style UX with embedded Python logic for real-time reasoning and system automation.</p>
-                                <!-- <p><em>Technologies: Python, Local LLMs, NLP Pipelines, Terminal UX</em></p> -->
-                                <!-- Link can be added if available -->
-                            </li>
-                            <li>
-                                <h3>VIBEZSUME – AI Resume Analyzer and Generator</h3>
-                                <p>Developed a local-SLM-powered application for resume validation, ATS scoring, and generation.</p>
-                                <p>Supports role-matching, template enforcement, and SOTA resume augmentation using interactive UI.</p>
-                                <!-- <p><em>Technologies: Python, Local SLMs, Streamlit (example for UI)</em></p> -->
-                            </li>
-                            <li>
-                                <h3>SKlearn Playground – ML Experimentation UI</h3>
-                                <p>Created a fully visual platform for experimenting with classification and regression algorithms.</p>
-                                <p>Features real-time metrics, evaluation plots, and algorithm switching — designed for both learning and experimentation.</p>
-                                <!-- <p><em>Technologies: Python, Scikit-learn, Flask/Streamlit (example for UI)</em></p> -->
-                            </li>
-                        </ul>
-                    </section>
-
-                    <section id="education" class="resume-section">
-                        <h2>🎓 Education</h2> <!-- Updated Section Title -->
-                        <ul class="timeline">
-                            <li class="event">
-                                <span class="duration">Expected 2025</span>
-                                <div class="content">
-                                    <h3>Stevens Institute of Technology</h3>
-                                    <h4>M.S. in Applied Artificial Intelligence</h4> <!-- Removed duplicate "Expected 2025" -->
-                                    <p>Focus: LLMs, Human-AI Systems, Reinforcement Learning, Security and Robustness in AI</p>
-                                </div>
-                            </li>
-                            <!-- Previous educational details removed as per new content -->
-                        </ul>
-                    </section>
-
-                    <section id="contact" class="resume-section">
-                        <h2>🌐 Links for Contact & Verification</h2> <!-- Updated Section Title -->
-                        <ul>
-                            <li>Portfolio: <a href="https://nikhilbramhandam.dev" target="_blank" rel="noopener noreferrer">nikhilbramhandam.dev</a> (Update after deployment)</li>
-                            <li>GitHub: <a href="https://github.com/nikhilbramhandam" target="_blank" rel="noopener noreferrer">github.com/nikhilbramhandam</a></li>
-                            <li>LinkedIn: <a href="https://linkedin.com/in/nikhilbramhandam" target="_blank" rel="noopener noreferrer">linkedin.com/in/nikhilbramhandam</a></li>
-                            <li>Medium: <a href="https://medium.com/@nikhilbramhandam" target="_blank" rel="noopener noreferrer">medium.com/@nikhilbramhandam</a></li>
-                            <li>Email: <a href="mailto:nikhilbramhandam@gmail.com">nikhilbramhandam@gmail.com</a></li>
-                            <!-- Phone number removed as per new content -->
-                        </ul>
-                    </section>
-
-                </div> <!-- .resume-layout -->
-            </div> <!-- .container -->
-        </main>
-
-        <footer id="main-footer">
-            <div class="container">
-                <p>&copy; 2024 Nikhil Bramhandam. All rights reserved. | Designed with care.</p> <!-- Updated Name -->
-            </div>
-        </footer>
-
-    </div> <!-- #page-container -->
-    <script src="script.js"></script>
+<div id="scroll-container">
+    <section class="panel hero">
+        <div class="layer background" data-speed="0.2"></div>
+        <div class="layer content" data-speed="0.5">
+            <h1>Hi, I'm Nikhil Bramhandam — Applied AI Engineer.</h1>
+            <canvas id="hero-canvas"></canvas>
+        </div>
+    </section>
+    <section class="panel about">
+        <h2>About Me</h2>
+        <p>Master's student in Applied Artificial Intelligence at Stevens Institute of Technology based in Jersey City, NJ. I enjoy building human-AI systems, exploring large language models, and hacking on reinforcement learning projects.</p>
+        <p>Skills: Python, React, .NET, Azure, ML, RL, NLP, Resume AI, Git, REST, SQL, Flask, Streamlit (legacy), MineRL, Temporal, Kubernetes.</p>
+    </section>
+    <section class="panel projects">
+        <h2>Magna Opera</h2>
+        <div class="project" data-speed="0.3">
+            <h3>MITRA OS</h3>
+            <p>Voice-first AI-native operating system with resource reasoning.</p>
+        </div>
+        <div class="project" data-speed="0.4">
+            <h3>VIBEZSUME</h3>
+            <p>Resume analyzer and generator using local SLMs.</p>
+        </div>
+        <div class="project" data-speed="0.5">
+            <h3>SKlearn Playground</h3>
+            <p>GUI ML experimenter with model evaluation and algorithm switching.</p>
+        </div>
+    </section>
+    <section class="panel contact">
+        <h2>Contact</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Message" required></textarea>
+            <button type="submit">Send</button>
+            <p id="form-status"></p>
+        </form>
+        <ul>
+            <li><a href="https://github.com/nikhilbramhandam">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/nikhilbramhandam/">LinkedIn</a></li>
+            <li><a href="https://medium.com/@nikhilbramhandam">Medium</a></li>
+            <li><a href="mailto:nikhilbramhandam@gmail.com">nikhilbramhandam@gmail.com</a></li>
+        </ul>
+    </section>
+</div>
 </body>
-
 </html>
