@@ -1,365 +1,124 @@
-/* Reset and Basic Setup */
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html {
-    color: rgb(43, 45, 66); /* Base text color */
-    font-family: 'Patrick Hand', cursive;
-    line-height: 1.6; /* Slightly increased line height for readability */
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-}
-
 body {
-    background: linear-gradient(to bottom, #f4f4f4, #e0e0e0); /* Lighter gradient */
-    font-size: 16px; /* Base font size */
-    /* padding-top: 70px; /* Account for fixed header if implemented - assuming not fixed for this design */
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    background: #111;
+    color: #eee;
 }
 
-/* Container for consistent width and centering */
-.container {
-    width: 90%;
-    max-width: 1000px; /* Max width of content area */
-    margin: 0 auto; /* Center the container */
-    padding: 0 15px; /* Padding on the sides */
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: normal; /* Patrick Hand is already quite bold */
-    margin-bottom: 0.75em;
-    line-height: 1.2; /* Adjust line-height for headings */
-}
-
-h1 {
-    font-size: 2.8rem;
-    color: #333;
-    text-align: center; /* Center main title */
-}
-
-h2 {
-    font-size: 1.8rem;
-    color: #FF934F; /* Orange from original */
-    border-bottom: 2px solid #2b2d42; /* Underline for section titles */
-    padding-bottom: 0.5em;
-    margin-bottom: 1em;
-    text-transform: uppercase;
-}
-
-h3 {
-    font-size: 1.4rem;
-    color: #247BA0; /* Blue from original */
-    margin-bottom: 0.5em;
-}
-
-h4 {
-    font-size: 1.1rem;
-    color: #444;
-}
-
-p {
-    margin-bottom: 1em;
-    line-height: 1.7; /* More spacing for paragraphs */
-}
-
-ul {
-    list-style: none;
-    padding-left: 0; /* Remove default padding */
-}
-
-li {
-    margin-bottom: 0.5em;
-}
-
-a {
-    text-decoration: none;
-    color: #247BA0; /* Link color */
-    transition: color 0.3s ease;
-}
-
-a:hover, a:focus {
-    color: #FF934F; /* Link hover color */
-    text-decoration: underline;
-}
-
-/* Page Structure */
-#page-container {
+#scroll-container {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scrollbars that might appear due to animations */
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    height: 100vh;
 }
 
-#main-content {
-    flex-grow: 1; /* Allows main content to fill available space */
-    padding: 2rem 0; /* Padding above and below main content */
-}
-
-/* Header */
-#main-header {
-    background-color: #2b2d42; /* Dark background for header */
-    color: #fff;
-    padding: 2rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-#main-header h1 {
-    color: #fff;
-    margin-bottom: 0.25em;
-    font-size: 3rem;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #FF934F; /* Orange border for profile pic */
-    margin-bottom: 1em;
-    object-fit: cover; /* Ensures image covers the area well */
-}
-
-.subtitle {
-    font-size: 1.3rem;
-    color: #f0f0f0; /* Lighter color for subtitle */
-    margin-bottom: 0;
-}
-
-/* Resume Layout & Sections */
-.resume-layout {
-    background-color: #fff; /* White background for resume content area */
+.panel {
+    position: relative;
+    min-width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.08);
-}
-
-.resume-section {
-    margin-bottom: 2.5rem; /* Space between sections */
+    box-sizing: border-box;
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.resume-section:last-child {
-    margin-bottom: 0;
-}
-
-.no-js .resume-section {
+.panel.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Specific Section Styling */
-#skills ul {
-    padding-left: 20px; /* Indent skill lists */
-    list-style: disc; /* Use disc bullets for skills */
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-.skills-category {
-    margin-bottom: 1.5rem;
-}
-.skills-category:last-child {
-    margin-bottom: 0;
+.hero .background {
+    background: radial-gradient(circle at center, #222 0%, #111 80%);
 }
 
-
-#flagship-projects ul {
-    perspective: 1000px; 
-}
-
-#flagship-projects li {
-    background-color: #f9f9f9; 
-    border: 1px solid #eee;
-    border-left: 5px solid #FF934F; 
-    padding: 1.5rem; 
-    margin-bottom: 2rem; 
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease-out, box-shadow 0.3s ease-out; 
-}
-
-#flagship-projects li:hover {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    transform: translateY(-5px); 
-}
-
-#flagship-projects h3 {
-    margin-bottom: 0.5em; 
-}
-
-/* Education Timeline */
-.timeline .event + .event {
-    padding-top: 1rem;
-}
-
-.event {
-    display: grid;
-    grid-template-columns: 70px 1fr; 
-    gap: 10px; 
+.hero h1 {
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
-.event .duration { /* This class was not in HTML, so rule might not apply. Assuming it's for future use or a mistake. */
-    font-weight: bold;
-    color: #2b2d42;
+#hero-canvas {
+    width: 100%;
+    height: 60vh;
+    display: block;
+}
+
+#color-label {
+    margin-top: 0.5rem;
+    display: inline-block;
     font-size: 0.9rem;
 }
 
-.timeline .content {
-    border-left: 1px solid #ccc; 
-    padding-left: 1rem;
-}
-
-.timeline .content h3 {
-    font-size: 1.2rem; 
-    color: #247BA0;
-}
-.timeline .content h4 {
-    font-size: 1rem;
-    color: #555;
-    font-style: italic;
-}
-
-/* Contact Section */
-#contact ul {
-    list-style: none;
-    padding-left: 0;
-}
-#contact li {
-    margin-bottom: 0.8em;
-    word-break: break-all; /* Break long links if they cause overflow */
-}
-#contact a {
-    font-weight: bold;
-}
-
-/* Footer */
-#main-footer {
-    background-color: #222; 
-    color: #aaa;
-    text-align: center;
-    padding: 1.5rem 0;
+#geometry-label {
+    margin-left: 1rem;
     font-size: 0.9rem;
 }
 
-#main-footer p {
-    margin-bottom: 0;
+.about {
+    background: #1d1d1d;
 }
 
-#main-footer a {
-    color: #FF934F;
+.projects {
+    background: #222;
 }
-#main-footer a:hover {
+
+.project {
+    margin-bottom: 2rem;
+}
+
+.contact {
+    background: #1d1d1d;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    gap: 0.5rem;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+}
+
+#contact-form button {
+    padding: 0.5rem;
+    background: #444;
     color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-/* --- Responsive Adjustments --- */
+#form-status {
+    height: 1.2rem;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-/* Medium devices (tablets, larger phones) - max-width 768px */
+#form-status.show {
+    opacity: 1;
+}
+
 @media (max-width: 768px) {
-    body {
-        padding-top: 0; /* Remove padding if header is not fixed/sticky */
-        font-size: 15px; /* Slightly reduce base font size */
-    }
-    .container {
-        width: 95%; /* Use more of the screen width */
-    }
-    #main-header {
-        padding: 1.5rem 0;
-    }
-    #main-header h1 {
-        font-size: 2.2rem; /* Reduce header font size */
-    }
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-    }
-    .subtitle {
-        font-size: 1.1rem; /* Reduce subtitle font size */
-    }
-    h2 { /* Section titles */
-        font-size: 1.6rem;
-    }
-    h3 { /* Subsection titles (like in Skills, Projects) */
-        font-size: 1.25rem;
-    }
-    .resume-layout {
-        padding: 1.5rem; /* Reduce padding inside the main white box */
-    }
-    #flagship-projects li {
-        padding: 1.25rem; /* Reduce padding in project cards */
-        margin-bottom: 1.5rem;
-    }
-    .event { /* Education timeline event */
-        grid-template-columns: 50px 1fr; /* Reduce width of the "duration" column */
-        gap: 8px;
-    }
-    .timeline .content h3 {
-        font-size: 1.1rem;
-    }
-     .timeline .content h4 {
-        font-size: 0.95rem;
-    }
-}
-
-/* Small devices (phones) - max-width 480px */
-@media (max-width: 480px) {
-    body {
-        font-size: 14px; /* Further reduce base font size */
-    }
-    #main-header {
-        padding: 1rem 0;
-    }
-    #main-header h1 {
-        font-size: 1.8rem; /* Further reduce main title */
-    }
-    .profile-pic {
-        width: 100px;
-        height: 100px;
-    }
-    .subtitle {
-        font-size: 1rem;
-    }
-    h2 { /* Section titles */
-        font-size: 1.4rem;
-        margin-bottom: 0.8em;
-    }
-    h3 { /* Subsection titles */
-        font-size: 1.1rem;
-    }
-    .resume-layout {
-        padding: 1rem; /* Further reduce padding */
-    }
-    #skills ul {
-        padding-left: 15px; /* Reduce indent for skills */
-    }
-    #flagship-projects li {
-        padding: 1rem; /* Further reduce padding in project cards */
-        margin-bottom: 1rem;
-    }
-    .event { /* Education timeline event - stack them */
-        grid-template-columns: 1fr; /* Full width for both parts */
-    }
-    .event .duration {
-        /* If .duration was used, style it appropriately for stacking, e.g., margin-bottom */
-         margin-bottom: 0.25em;
-         font-size: 0.85rem;
-    }
-    .timeline .content {
-        border-left: none; /* Remove border when stacked */
-        padding-left: 0; /* Remove padding when stacked */
-    }
-    #contact li {
-        font-size: 0.95rem; /* Adjust contact link size for tappability */
-    }
-    #contact a {
-        display: inline-block; /* Better touch targets */
-        padding: 0.2em 0;
-    }
-    #main-footer {
-        padding: 1rem 0;
-        font-size: 0.85rem;
+    .hero h1 {
+        font-size: 1.8rem;
     }
 }
